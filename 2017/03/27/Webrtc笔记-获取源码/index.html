@@ -1,0 +1,755 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="webrtc," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Webrtc源码支持直接在编译器上调试了，以macOS环境为例，记录获取webrtc源码过程，注：全程需要翻墙">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Webrtc笔记-获取源码">
+<meta property="og:url" content="http://yoursite.com/2017/03/27/Webrtc笔记-获取源码/index.html">
+<meta property="og:site_name" content="Rany">
+<meta property="og:description" content="Webrtc源码支持直接在编译器上调试了，以macOS环境为例，记录获取webrtc源码过程，注：全程需要翻墙">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1528347-3f79007d2276e7db.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1528347-02e8bad86a47d498.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-03-27T04:00:07.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Webrtc笔记-获取源码">
+<meta name="twitter:description" content="Webrtc源码支持直接在编译器上调试了，以macOS环境为例，记录获取webrtc源码过程，注：全程需要翻墙">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1528347-3f79007d2276e7db.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/03/27/Webrtc笔记-获取源码/"/>
+
+
+
+
+
+  <title> Webrtc笔记-获取源码 | Rany </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Rany</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/27/Webrtc笔记-获取源码/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="An Ran">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/11763180?v=3&s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rany">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Webrtc笔记-获取源码
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-27T09:30:56+08:00">
+                2017-03-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/webrtc/" itemprop="url" rel="index">
+                    <span itemprop="name">webrtc</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Webrtc源码支持直接在编译器上调试了，以macOS环境为例，记录获取webrtc源码过程，注：全程需要翻墙</p>
+<a id="more"></a>
+<h2 id="1、开发者环境"><a href="#1、开发者环境" class="headerlink" title="1、开发者环境"></a>1、开发者环境</h2><blockquote>
+<p><strong>Webrtc源码支持直接在编译器上调试了，以macOS环境为例</strong></p>
+</blockquote>
+<h2 id="2、获取webrtc源码（翻墙）"><a href="#2、获取webrtc源码（翻墙）" class="headerlink" title="2、获取webrtc源码（翻墙）"></a>2、获取webrtc源码（翻墙）</h2><blockquote>
+<p>PS：由于国情，下载代码过程，包括gclient sync<br>同步代码都必须翻墙！推荐使用Shadowsocks+Proxifier进行全局代理：<a href="http://www.jianshu.com/p/754863f67022" target="_blank" rel="external">方法</a></p>
+</blockquote>
+<p><strong>( 1 )、获取depot_tools工具</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git</div></pre></td></tr></table></figure>
+<p><strong>( 2 )、添加depot_tool路径到全局环境变量里面</strong></p>
+<ul>
+<li><p><code>vi ~/.bash_profile</code> 编辑全局环境配置文件（我的是在根目录,如果没有，在根目录下创建一个吧）</p>
+</li>
+<li><p>把depot_tool的路径添进去：<code>PATH=&quot;${PATH}:depot_tool的绝对路径&quot;</code></p>
+</li>
+<li><p>然后执行 <code>. ~/.bash_profile</code>  就生效了</p>
+</li>
+</ul>
+<p><strong>( 3 )、下载源码</strong></p>
+<ul>
+<li><p>新建文件夹，然后cd到这个文件目录下</p>
+</li>
+<li><p><code>fetch --nohooks webrtc_ios</code>获取源码</p>
+</li>
+<li><p>然后是漫长的等待，如图，≈6G </p>
+</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/1528347-3f79007d2276e7db.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="3、创建分支"><a href="#3、创建分支" class="headerlink" title="3、创建分支"></a>3、创建分支</h2><ul>
+<li><p>建议创建一个新的本地分支<br><code>git new-branch &lt;branch name&gt;</code></p>
+</li>
+<li><p>git管理建议使用<a href="https://www.sourcetreeapp.com/" target="_blank" rel="external">SourceTree</a></p>
+</li>
+<li><p>把下载好的src拖进<a href="https://www.sourcetreeapp.com/" target="_blank" rel="external">SourceTree</a>可以详细看版本的更新日志</p>
+</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/1528347-02e8bad86a47d498.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="4、源码结构"><a href="#4、源码结构" class="headerlink" title="4、源码结构"></a>4、源码结构</h2><p>～漫长的代码下载后能会获取到一个src文件目录：如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">├── base</div><div class="line">├── build  编译相关脚本</div><div class="line">├── build_overrides  覆盖编译参数</div><div class="line">├── buildtools</div><div class="line">├── data  测试数据</div><div class="line">├── infra</div><div class="line">├── resources 需要的资源文件</div><div class="line">├── testing</div><div class="line">├── third_party 用到的第三方库ffmpeg/openh264...代码，5G左右</div><div class="line">├── tools</div><div class="line">├── tools-webrtc 一些编译脚本</div><div class="line">└── webrtc 核心代码</div></pre></td></tr></table></figure></p>
+<p>核心代码目录src/webrtc<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line">├── api</div><div class="line">├── audio</div><div class="line">├── base</div><div class="line">├── call</div><div class="line">├── common_audio</div><div class="line">├── common_video</div><div class="line">│   ├── h264</div><div class="line">│   ├── include</div><div class="line">│   └── libyuv</div><div class="line">├── examples</div><div class="line">│   ├── androidapp Android版AppRTCMbile</div><div class="line">│   ├── androidjunit</div><div class="line">│   ├── androidtests</div><div class="line">│   ├── objc  iOS版AppRTCMbile</div><div class="line">│   ├── peerconnection</div><div class="line">│   ├── relayserver</div><div class="line">│   ├── stunprober</div><div class="line">│   ├── stunserver</div><div class="line">│   └── turnserver</div><div class="line">├── logging</div><div class="line">├── media</div><div class="line">├── modules</div><div class="line">│   ├── audio_coding</div><div class="line">│   ├── audio_conference_mixer</div><div class="line">│   ├── audio_device</div><div class="line">│   ├── audio_mixer</div><div class="line">│   ├── audio_processing</div><div class="line">│   ├── bitrate_controller</div><div class="line">│   ├── congestion_controller</div><div class="line">│   ├── desktop_capture</div><div class="line">│   ├── include</div><div class="line">│   ├── media_file</div><div class="line">│   ├── pacing</div><div class="line">│   ├── remote_bitrate_estimator</div><div class="line">│   ├── rtp_rtcp</div><div class="line">│   ├── utility</div><div class="line">│   ├── video_capture</div><div class="line">│   ├── video_coding</div><div class="line">│   └── video_processing</div><div class="line">├── p2p</div><div class="line">│   ├── base</div><div class="line">│   ├── client</div><div class="line">│   ├── quic</div><div class="line">│   └── stunprober</div><div class="line">├── pc</div><div class="line">├── sdk</div><div class="line">│   ├── android  Android sdk封转</div><div class="line">│   └── objc iOS sdk封转</div><div class="line">├── stats</div><div class="line">├── system_wrappers</div><div class="line">│   ├── include</div><div class="line">│   └── source</div><div class="line">├── test</div><div class="line">├── tools</div><div class="line">├── video</div><div class="line">└── voice_engine</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/webrtc/" rel="tag"># webrtc</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/26/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/27/Webrtc笔记-运行demo到ios真机/" rel="prev" title="Webrtc笔记-运行demo到ios真机">
+                Webrtc笔记-运行demo到ios真机 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars3.githubusercontent.com/u/11763180?v=3&s=460"
+               alt="An Ran" />
+          <p class="site-author-name" itemprop="name">An Ran</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、开发者环境"><span class="nav-number">1.</span> <span class="nav-text">1、开发者环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、获取webrtc源码（翻墙）"><span class="nav-number">2.</span> <span class="nav-text">2、获取webrtc源码（翻墙）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、创建分支"><span class="nav-number">3.</span> <span class="nav-text">3、创建分支</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、源码结构"><span class="nav-number">4.</span> <span class="nav-text">4、源码结构</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">An Ran</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

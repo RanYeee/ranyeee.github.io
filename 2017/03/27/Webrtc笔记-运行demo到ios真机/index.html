@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="webrtc," />
 
 
 
@@ -87,19 +87,25 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="description" content="编译webrtc源码目标：运行ios的demo到真机上">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2017/03/26/hello-world/index.html">
+<meta property="og:title" content="Webrtc笔记-运行demo到ios真机">
+<meta property="og:url" content="http://yoursite.com/2017/03/27/Webrtc笔记-运行demo到ios真机/index.html">
 <meta property="og:site_name" content="Rany">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
-<meta property="og:updated_time" content="2017-03-26T15:29:57.000Z">
+<meta property="og:description" content="编译webrtc源码目标：运行ios的demo到真机上">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1528347-9452136ed01503de.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/124">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1528347-83693c1e19f56675.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1528347-727afccd40592b22.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1528347-b9c9ee0f11d60387.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1528347-3b247571dbcdbcd2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1528347-ed368100530b0685.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1528347-0fcce1f019362792.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1528347-e0e30630e75aebcd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-03-27T04:00:19.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="twitter:title" content="Webrtc笔记-运行demo到ios真机">
+<meta name="twitter:description" content="编译webrtc源码目标：运行ios的demo到真机上">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1528347-9452136ed01503de.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/124">
 
 
 
@@ -127,13 +133,13 @@ Quick">
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/03/26/hello-world/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/03/27/Webrtc笔记-运行demo到ios真机/"/>
 
 
 
 
 
-  <title> Hello World | Rany </title>
+  <title> Webrtc笔记-运行demo到ios真机 | Rany </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -262,7 +268,7 @@ Quick">
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/26/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/27/Webrtc笔记-运行demo到ios真机/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="An Ran">
@@ -283,7 +289,7 @@ Quick">
             
             
               
-                Hello World
+                Webrtc笔记-运行demo到ios真机
               
             
           </h1>
@@ -298,8 +304,8 @@ Quick">
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-26T23:29:57+08:00">
-                2017-03-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-27T10:47:16+08:00">
+                2017-03-27
               </time>
             
 
@@ -308,6 +314,28 @@ Quick">
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/webrtc/" itemprop="url" rel="index">
+                    <span itemprop="name">webrtc</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -334,15 +362,77 @@ Quick">
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <p>编译webrtc源码<br>目标：运行ios的demo到真机上</p>
+<a id="more"></a>
+<p>##ios生成xcode项目</p>
+<p><strong>可产生在真机或者模拟器上面运行的项目</strong></p>
+<p>/src文件目录下执行:</p>
+<ul>
+<li><strong>真机项目：</strong></li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gn gen out/ios_64 --args=<span class="string">'target_os="ios" target_cpu="arm64"'</span> --ide=xcode</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>模拟器项目：</strong></li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gn gen out/ios_sim --args=<span class="string">'target_os="ios" target_cpu="x64"'</span> --ide=xcode</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>gn属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>target_os</td>
+<td>默认值是运行脚本的任何操作系统，运行到ios系统即赋值“ios”</td>
+</tr>
+<tr>
+<td>target_cpu</td>
+<td>根据设备的系统架构将其设置为“arm”或“arm64”或”x64”</td>
+</tr>
+</tbody>
+</table>
+<p>执行命令成功后，会看到以下的提示</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1528347-9452136ed01503de.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/124" alt="Paste_Image.png"></p>
+<p>并且在<code>out/对应的文件夹</code>下生成了xcode项目,如下图</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1528347-83693c1e19f56675.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>打开<code>all.xcworkspace</code>就在ide中看到完整的WebRTC项目了！</p>
+<p>关于gn的一些操作可以<a href="https://chromium.googlesource.com/chromium/src/+/master/tools/gn/README.md" target="_blank" rel="external">参考这里</a></p>
+<p>##运行demo到真机上</p>
+<blockquote>
+<p>打开<code>all.xcworkspace</code>后会看到很多target，其中<code>AppRTCMobile</code>就是官方的demo</p>
+</blockquote>
+<p>这里的Identity、Signing不需要修改，也不需要勾选自动签名</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1528347-727afccd40592b22.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>选择设备后<code>command+R</code></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1528347-b9c9ee0f11d60387.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p><strong>如果没问题的话会直接看到真机上已经安装并运行了WebRTC的demo</strong></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1528347-3b247571dbcdbcd2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320" alt="Paste_Image.png"></p>
+<p>在两台真机上安装该app，输入同一个Room name之后Start call就能互通了（需要翻墙）</p>
+<p>##运行到真机遇到的问题<br><strong>可能会遇到以下这些报错</strong></p>
+<table>
+<thead>
+<tr>
+<th>报错</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="http://upload-images.jianshu.io/upload_images/1528347-ed368100530b0685.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></td>
+<td>检查一下是否生成的cpu架构不符合设备</td>
+</tr>
+<tr>
+<td><img src="http://upload-images.jianshu.io/upload_images/1528347-0fcce1f019362792.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></td>
+<td>证书的签名问题 尝试XCode&gt;Preferences&gt;account 更新provisioning profiles</td>
+</tr>
+<tr>
+<td><img src="http://upload-images.jianshu.io/upload_images/1528347-e0e30630e75aebcd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></td>
+<td>打包出来的app的provisioning文件 和teamid和app的签名不一致  附上<a href="./Webrtc笔记-运行demo 遇到的签名问题.md">方法</a></td>
+</tr>
+</tbody>
+</table>
 
       
     </div>
@@ -370,6 +460,12 @@ Quick">
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/webrtc/" rel="tag"># webrtc</a>
+          
+        </div>
+      
 
       
         
@@ -379,14 +475,18 @@ Quick">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/03/27/Webrtc笔记-获取源码/" rel="next" title="Webrtc笔记-获取源码">
+                <i class="fa fa-chevron-left"></i> Webrtc笔记-获取源码
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/03/27/Webrtc笔记-获取源码/" rel="prev" title="Webrtc笔记-获取源码">
-                Webrtc笔记-获取源码 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/03/27/Webrtc笔记-运行demo-遇到的签名问题/" rel="prev" title="Webrtc笔记-运行demo 遇到的签名问题">
+                Webrtc笔记-运行demo 遇到的签名问题 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -434,17 +534,8 @@ Quick">
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="https://avatars3.githubusercontent.com/u/11763180?v=3&s=460"
@@ -506,22 +597,6 @@ Quick">
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
