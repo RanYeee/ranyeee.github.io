@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="git," />
 
 
 
@@ -90,11 +90,7 @@
 <meta name="description" content="Git分支管理策略在实际开发中，一般用3个分支就可以了：
 1、“mster” 主分支用来发布
 2、“dev” 日常开发用的分支
-3、“bug” 修改bug用的分支
-
-master分支仅用来发布新版本，平时不能在上面干活；
-
-dev分支是不稳定的，比如1.0版本发布时，再把dev分支合并到master上，你和你的小伙伴们每个人都在dev分支上干活，每个人都有自己的分支，时不时地往dev分支上合并就可">
+3、“bug” 修改bug用的分支">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git分支管理策略">
 <meta property="og:url" content="http://yoursite.com/2017/06/02/Git分支管理策略/index.html">
@@ -102,22 +98,14 @@ dev分支是不稳定的，比如1.0版本发布时，再把dev分支合并到ma
 <meta property="og:description" content="Git分支管理策略在实际开发中，一般用3个分支就可以了：
 1、“mster” 主分支用来发布
 2、“dev” 日常开发用的分支
-3、“bug” 修改bug用的分支
-
-master分支仅用来发布新版本，平时不能在上面干活；
-
-dev分支是不稳定的，比如1.0版本发布时，再把dev分支合并到master上，你和你的小伙伴们每个人都在dev分支上干活，每个人都有自己的分支，时不时地往dev分支上合并就可">
-<meta property="og:updated_time" content="2017-06-02T08:08:53.000Z">
+3、“bug” 修改bug用的分支">
+<meta property="og:updated_time" content="2017-06-02T08:33:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git分支管理策略">
 <meta name="twitter:description" content="Git分支管理策略在实际开发中，一般用3个分支就可以了：
 1、“mster” 主分支用来发布
 2、“dev” 日常开发用的分支
-3、“bug” 修改bug用的分支
-
-master分支仅用来发布新版本，平时不能在上面干活；
-
-dev分支是不稳定的，比如1.0版本发布时，再把dev分支合并到master上，你和你的小伙伴们每个人都在dev分支上干活，每个人都有自己的分支，时不时地往dev分支上合并就可">
+3、“bug” 修改bug用的分支">
 
 
 
@@ -327,6 +315,28 @@ dev分支是不稳定的，比如1.0版本发布时，再把dev分支合并到ma
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/git/" itemprop="url" rel="index">
+                    <span itemprop="name">git</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -355,7 +365,7 @@ dev分支是不稳定的，比如1.0版本发布时，再把dev分支合并到ma
         <h1 id="Git分支管理策略"><a href="#Git分支管理策略" class="headerlink" title="Git分支管理策略"></a>Git分支管理策略</h1><p>在实际开发中，一般用3个分支就可以了：</p>
 <p>1、<strong>“mster”</strong> 主分支用来发布</p>
 <p>2、<strong>“dev”</strong> 日常开发用的分支</p>
-<p>3、<strong>“bug”</strong> 修改bug用的分支</p>
+<p>3、<strong>“bug”</strong> 修改bug用的分支<br><a id="more"></a></p>
 <ul>
 <li><p><code>master</code>分支仅用来发布新版本，平时不能在上面干活；</p>
 </li>
@@ -367,7 +377,8 @@ dev分支是不稳定的，比如1.0版本发布时，再把dev分支合并到ma
 <blockquote>
 <p>假设远程公共仓库，有一个master和一个dev分支，进行多人协作开发时候（每个人的公钥必须加入到远程账号下，否则无法push）， 每个人都应该clone一份到本地。 但是clone的只是master，如果远程的master和dev一样，没关系；如果不一致，则需要clone出dev分支 git checkout -b dev origin/dev 之后每个人在本地的dev分支上独自开发（最好不要在mast上开发）， 开发完成之后push到远程dev, git push origin dev。 之后审核人再确定是否合并dev到master。</p>
 </blockquote>
-<p>##团队多人开发协作</p>
+<font size="5">团队多人开发协作</font>
+
 <p>多人协作的工作模式通常是这样：</p>
 <p>首先，可以试图用git push origin branch-name推送自己的修改；</p>
 <p>如果推送失败，则因为远程分支比你的本地更新，需要先用git pull试图合并；</p>
@@ -401,6 +412,12 @@ dev分支是不稳定的，比如1.0版本发布时，再把dev分支合并到ma
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/git/" rel="tag"># git</a>
+          
+        </div>
       
 
       
@@ -502,7 +519,7 @@ dev分支是不稳定的，比如1.0版本发布时，再把dev分支合并到ma
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -513,7 +530,7 @@ dev分支是不稳定的，比如1.0版本发布时，再把dev分支合并到ma
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
