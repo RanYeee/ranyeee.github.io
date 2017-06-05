@@ -87,28 +87,19 @@
 
 
 
-<meta name="description" content="#简介
-YTKNetwork 是猿题库 iOS 研发团队基于 AFNetworking 封装的 iOS 网络库，从 2.x 开始，YTKNetwork 抛弃了旧有的以 AFHTTPRequestOperation 为核心的 API，采用新的基于 NSURLSession 的 API。
-#安装
-可在 Podfile 中加入下面一行代码来使用 YTKNetwork。
-$ pod ‘YTKNetwork">
+<meta name="description" content="##简介
+YTKNetwork 是猿题库 iOS 研发团队基于 AFNetworking 封装的 iOS 网络库，从 2.x 开始，YTKNetwork 抛弃了旧有的以 AFHTTPRequestOperation 为核心的 API，采用新的基于 NSURLSession 的 API。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="YTKNetwork">
 <meta property="og:url" content="http://yoursite.com/2017/06/05/YTKNetwork/index.html">
 <meta property="og:site_name" content="Rany">
-<meta property="og:description" content="#简介
-YTKNetwork 是猿题库 iOS 研发团队基于 AFNetworking 封装的 iOS 网络库，从 2.x 开始，YTKNetwork 抛弃了旧有的以 AFHTTPRequestOperation 为核心的 API，采用新的基于 NSURLSession 的 API。
-#安装
-可在 Podfile 中加入下面一行代码来使用 YTKNetwork。
-$ pod ‘YTKNetwork">
-<meta property="og:updated_time" content="2017-06-05T05:56:13.000Z">
+<meta property="og:description" content="##简介
+YTKNetwork 是猿题库 iOS 研发团队基于 AFNetworking 封装的 iOS 网络库，从 2.x 开始，YTKNetwork 抛弃了旧有的以 AFHTTPRequestOperation 为核心的 API，采用新的基于 NSURLSession 的 API。">
+<meta property="og:updated_time" content="2017-06-05T05:58:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="YTKNetwork">
-<meta name="twitter:description" content="#简介
-YTKNetwork 是猿题库 iOS 研发团队基于 AFNetworking 封装的 iOS 网络库，从 2.x 开始，YTKNetwork 抛弃了旧有的以 AFHTTPRequestOperation 为核心的 API，采用新的基于 NSURLSession 的 API。
-#安装
-可在 Podfile 中加入下面一行代码来使用 YTKNetwork。
-$ pod ‘YTKNetwork">
+<meta name="twitter:description" content="##简介
+YTKNetwork 是猿题库 iOS 研发团队基于 AFNetworking 封装的 iOS 网络库，从 2.x 开始，YTKNetwork 抛弃了旧有的以 AFHTTPRequestOperation 为核心的 API，采用新的基于 NSURLSession 的 API。">
 
 
 
@@ -343,12 +334,13 @@ $ pod ‘YTKNetwork">
       
 
       
-        <p>#简介</p>
+        <p>##简介</p>
 <p>YTKNetwork 是猿题库 <a href="http://lib.csdn.net/base/ios" title="iOS知识库" target="_blank" rel="external">iOS</a> 研发团队基于 AFNetworking 封装的 iOS 网络库，从 2.x 开始，YTKNetwork 抛弃了旧有的以 AFHTTPRequestOperation 为核心的 API，采用新的基于 NSURLSession 的 API。</p>
-<p>#安装</p>
+<a id="more"></a>
+<p>##安装</p>
 <p>可在 Podfile 中加入下面一行代码来使用 YTKNetwork。</p>
 <p><code>$ pod ‘YTKNetwork&#39;</code></p>
-<p>#功能<br>相比 AFNetworking，YTKNetwork 提供了以下更高级的功能：</p>
+<p>##功能<br>相比 AFNetworking，YTKNetwork 提供了以下更高级的功能：</p>
 <p>1、支持按时间缓存网络请求内容</p>
 <p>2、支持按版本号缓存网络请求内容</p>
 <p>3、支持统一设置服务器和 CDN 的地址</p>
@@ -357,7 +349,7 @@ $ pod ‘YTKNetwork">
 <p>6、支持 block 和 delegate 两种模式的回调方式</p>
 <p>7、支持批量的网络请求发送，并统一设置它们的回调（实现在 YTKBatchRequest 类中）</p>
 <p>8、支持方便地设置有相互依赖的网络请求的发送，例如：发送请求 A，根据请求 A 的结果，选择性的发送请求 B 和 C，再根据 B 和 C 的结果，选择性的发送请求 D。（实现在 YTKChainRequest 类中）<br>支持网络请求 URL 的filter，可以统一为网络请求加上一些参数，或者修改一些路径。</p>
-<p>#基本思想<br>YTKNetwork 的基本的思想是把每一个网络请求封装成对象。所以使用 YTKNetwork，你的每一个请求都需要继承 YTKRequest 类，通过覆盖父类的一些方法来构造指定的网络请求。 </p>
+<p>##基本思想<br>YTKNetwork 的基本的思想是把每一个网络请求封装成对象。所以使用 YTKNetwork，你的每一个请求都需要继承 YTKRequest 类，通过覆盖父类的一些方法来构造指定的网络请求。 </p>
 <blockquote>
 <p>把每一个网络请求封装成对象其实是使用了设计模式中的 Command 模式，它有以下好处：</p>
 <ul>
@@ -372,7 +364,7 @@ $ pod ‘YTKNetwork">
 <li><p>方便做对象的持久化。</p>
 </li>
 </ul>
-<p>#基础使用</p>
+<p>##基础使用</p>
 <p>首先，在程序刚启动的回调中，使用 YTKNetworkConfig 类，设置好网络请求的服务器地址，如下所示：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">- (BOOL)application:(UIApplication *)application </div><div class="line">   didFinishLaunchingWithOptions:(NSDictionary *)launchOptions</div><div class="line">&#123;</div><div class="line">   YTKNetworkConfig *config = [YTKNetworkConfig sharedConfig];</div><div class="line">   config.baseUrl = @“https://love.163.com&quot;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <font color="#2196F3">当我们需要切换服务器地址时，只需要修改 YTKNetworkConfig 中的 baseUrl 参数即可。 </font>

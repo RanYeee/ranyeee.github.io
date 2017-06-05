@@ -333,57 +333,15 @@
 
       
         
-          
-            <p>#简介</p>
-<p>YTKNetwork 是猿题库 <a href="http://lib.csdn.net/base/ios" title="iOS知识库" target="_blank" rel="external">iOS</a> 研发团队基于 AFNetworking 封装的 iOS 网络库，从 2.x 开始，YTKNetwork 抛弃了旧有的以 AFHTTPRequestOperation 为核心的 API，采用新的基于 NSURLSession 的 API。</p>
-<p>#安装</p>
-<p>可在 Podfile 中加入下面一行代码来使用 YTKNetwork。</p>
-<p><code>$ pod ‘YTKNetwork&#39;</code></p>
-<p>#功能<br>相比 AFNetworking，YTKNetwork 提供了以下更高级的功能：</p>
-<p>1、支持按时间缓存网络请求内容</p>
-<p>2、支持按版本号缓存网络请求内容</p>
-<p>3、支持统一设置服务器和 CDN 的地址</p>
-<p>4、支持检查返回 JSON 内容的合法性</p>
-<p>5、支持文件的断点续传</p>
-<p>6、支持 block 和 delegate 两种模式的回调方式</p>
-<p>7、支持批量的网络请求发送，并统一设置它们的回调（实现在 YTKBatchRequest 类中）</p>
-<p>8、支持方便地设置有相互依赖的网络请求的发送，例如：发送请求 A，根据请求 A 的结果，选择性的发送请求 B 和 C，再根据 B 和 C 的结果，选择性的发送请求 D。（实现在 YTKChainRequest 类中）<br>支持网络请求 URL 的filter，可以统一为网络请求加上一些参数，或者修改一些路径。</p>
-<p>#基本思想<br>YTKNetwork 的基本的思想是把每一个网络请求封装成对象。所以使用 YTKNetwork，你的每一个请求都需要继承 YTKRequest 类，通过覆盖父类的一些方法来构造指定的网络请求。 </p>
-<blockquote>
-<p>把每一个网络请求封装成对象其实是使用了设计模式中的 Command 模式，它有以下好处：</p>
-<ul>
-<li>将网络请求与具体的第三方库依赖隔离，方便以后更换底层的网络库</li>
-</ul>
-</blockquote>
-<ul>
-<li><p>方便在基类中处理公共逻辑</p>
-</li>
-<li><p>方便在基类中处理缓存逻辑，以及其它一些公共逻辑。</p>
-</li>
-<li><p>方便做对象的持久化。</p>
-</li>
-</ul>
-<p>#基础使用</p>
-<p>首先，在程序刚启动的回调中，使用 YTKNetworkConfig 类，设置好网络请求的服务器地址，如下所示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">- (BOOL)application:(UIApplication *)application </div><div class="line">   didFinishLaunchingWithOptions:(NSDictionary *)launchOptions</div><div class="line">&#123;</div><div class="line">   YTKNetworkConfig *config = [YTKNetworkConfig sharedConfig];</div><div class="line">   config.baseUrl = @“https://love.163.com&quot;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<font color="#2196F3">当我们需要切换服务器地址时，只需要修改 YTKNetworkConfig 中的 baseUrl 参数即可。 </font>
-
-<p>每一种请求都需要继承 YTKRequest 类，通过覆盖父类的一些方法来构造指定的网络请求。假设我们要向网址 <a href="https://love.163.com/login" target="_blank" rel="external">https://love.163.com/login</a> 发送一个 POST 请求，请求参数是 username 和 password。那么，这个类应该如下所示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">// LoginApi.h</div><div class="line">#import &quot;YTKRequest.h&quot;</div><div class="line"></div><div class="line">@interface LoginApi : YTKRequest</div><div class="line"></div><div class="line">- (id)initWithUsername:(NSString *)username password:(NSString *)password;</div><div class="line"></div><div class="line">@end</div><div class="line"></div><div class="line"></div><div class="line">// LoginApi.m</div><div class="line"></div><div class="line">#import &quot;LoginApi.h&quot;</div><div class="line"></div><div class="line">@implementation LoginApi &#123;</div><div class="line">    NSString *_username;</div><div class="line">    NSString *_password;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (id)initWithUsername:(NSString *)username password:(NSString *)password &#123;</div><div class="line">    self = [super init];</div><div class="line">    if (self) &#123;</div><div class="line">        _username = username;</div><div class="line">        _password = password;</div><div class="line">    &#125;</div><div class="line">    return self;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (NSString *)requestUrl &#123;</div><div class="line">    // “ https://love.163.com ” 在 YTKNetworkConfig 中设置，这里只填除去域名剩余的网址信息</div><div class="line">    return @&quot;/login&quot;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (YTKRequestMethod)requestMethod &#123;</div><div class="line">    return YTKRequestMethodPOST;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (id)requestArgument &#123;</div><div class="line">    return @&#123;</div><div class="line">        @&quot;username&quot;: _username,</div><div class="line">        @&quot;password&quot;: _password</div><div class="line">    &#125;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
-<p>在上面这个示例中，我们可以看到：</p>
-<ul>
-<li><p>通过覆盖 YTKRequest 类的 requestUrl 方法，指定了网址信息。</p>
-</li>
-<li><p>通过覆盖 YTKRequest 类的 requestMethod 方法，指定 POST 方法来传递参数。</p>
-</li>
-<li><p>通过覆盖 YTKRequest 类的 requestArgument 方法，提供了 POST 的信息。 </p>
-</li>
-</ul>
-<p>在构造完成 LoginApi 之后，我们可以在登录的 ViewController 中，调用 LoginApi，并用 block 或 delegate 的方式来取得网络请求结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">- (void)loginButtonPressed:(id)sender &#123;</div><div class="line">    NSString *username = self.UserNameTextField.text;</div><div class="line">    NSString *password = self.PasswordTextField.text;</div><div class="line">    if (username.length &gt; 0 &amp;&amp; password.length &gt; 0) &#123;</div><div class="line">        LoginApi *api = [[LoginApi alloc] initWithUsername:username password:password];</div><div class="line">        api.delegate = self;</div><div class="line">        [api start];</div><div class="line">        /* 也可使用如下方法代替 start，此时则无需设置 api 的 delegate。</div><div class="line">        *[api startWithCompletionBlockWithSuccess:^(YTKBaseRequest *request) &#123;</div><div class="line">            NSLog(@&quot;succeed&quot;);</div><div class="line">        &#125; failure:^(YTKBaseRequest *request) &#123;</div><div class="line">            NSLog(@&quot;failed&quot;);</div><div class="line">        &#125;];</div><div class="line">        */</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)requestFinished:(YTKBaseRequest *)request &#123;</div><div class="line">    NSLog(@&quot;succeed&quot;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)requestFailed:(YTKBaseRequest *)request &#123;</div><div class="line">    NSLog(@&quot;failed&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>from <a href="http://blog.csdn.net/u011303816/article/details/54426236" target="_blank" rel="external">YTKNetwork 到底做了什么</a></p>
-
-          
+          <p>##简介</p>
+<p>YTKNetwork 是猿题库 <a href="http://lib.csdn.net/base/ios" title="iOS知识库">iOS</a> 研发团队基于 AFNetworking 封装的 iOS 网络库，从 2.x 开始，YTKNetwork 抛弃了旧有的以 AFHTTPRequestOperation 为核心的 API，采用新的基于 NSURLSession 的 API。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/06/05/YTKNetwork/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
