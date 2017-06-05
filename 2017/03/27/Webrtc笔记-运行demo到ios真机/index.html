@@ -101,7 +101,7 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1528347-ed368100530b0685.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1528347-0fcce1f019362792.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1528347-e0e30630e75aebcd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-03-27T04:00:19.000Z">
+<meta property="og:updated_time" content="2017-06-05T06:08:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Webrtc笔记-运行demo到ios真机">
 <meta name="twitter:description" content="编译webrtc源码目标：运行ios的demo到真机上">
@@ -364,8 +364,7 @@
       
         <p>编译webrtc源码<br>目标：运行ios的demo到真机上</p>
 <a id="more"></a>
-<p>##ios生成xcode项目</p>
-<p><strong>可产生在真机或者模拟器上面运行的项目</strong></p>
+<h2 id="ios生成xcode项目"><a href="#ios生成xcode项目" class="headerlink" title="ios生成xcode项目"></a>ios生成xcode项目</h2><p><strong>可产生在真机或者模拟器上面运行的项目</strong></p>
 <p>/src文件目录下执行:</p>
 <ul>
 <li><strong>真机项目：</strong></li>
@@ -399,8 +398,7 @@
 <p><img src="http://upload-images.jianshu.io/upload_images/1528347-83693c1e19f56675.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
 <p>打开<code>all.xcworkspace</code>就在ide中看到完整的WebRTC项目了！</p>
 <p>关于gn的一些操作可以<a href="https://chromium.googlesource.com/chromium/src/+/master/tools/gn/README.md" target="_blank" rel="external">参考这里</a></p>
-<p>##运行demo到真机上</p>
-<blockquote>
+<h2 id="运行demo到真机上"><a href="#运行demo到真机上" class="headerlink" title="运行demo到真机上"></a>运行demo到真机上</h2><blockquote>
 <p>打开<code>all.xcworkspace</code>后会看到很多target，其中<code>AppRTCMobile</code>就是官方的demo</p>
 </blockquote>
 <p>这里的Identity、Signing不需要修改，也不需要勾选自动签名</p>
@@ -410,7 +408,7 @@
 <p><strong>如果没问题的话会直接看到真机上已经安装并运行了WebRTC的demo</strong></p>
 <p><img src="http://upload-images.jianshu.io/upload_images/1528347-3b247571dbcdbcd2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320" alt="Paste_Image.png"></p>
 <p>在两台真机上安装该app，输入同一个Room name之后Start call就能互通了（需要翻墙）</p>
-<p>##运行到真机遇到的问题<br><strong>可能会遇到以下这些报错</strong></p>
+<h2 id="运行到真机遇到的问题"><a href="#运行到真机遇到的问题" class="headerlink" title="运行到真机遇到的问题"></a>运行到真机遇到的问题</h2><p><strong>可能会遇到以下这些报错</strong></p>
 <table>
 <thead>
 <tr>
@@ -534,8 +532,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="https://avatars3.githubusercontent.com/u/11763180?v=3&s=460"
@@ -597,6 +604,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ios生成xcode项目"><span class="nav-number">1.</span> <span class="nav-text">ios生成xcode项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行demo到真机上"><span class="nav-number">2.</span> <span class="nav-text">运行demo到真机上</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行到真机遇到的问题"><span class="nav-number">3.</span> <span class="nav-text">运行到真机遇到的问题</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

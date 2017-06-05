@@ -87,21 +87,21 @@
 
 
 
-<meta name="description" content="##证书ID是什么？
+<meta name="description" content="证书ID是什么？
 图中方框里字符串就是证书ID，升级后的ipa标识就是证书ID+BundleID，只有两者完全匹配，安装包才能覆盖安装，否则就会提示安装失败。解决办法就是卸载安装包，重新安装！">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS证书及ipa包重签名探究">
 <meta property="og:url" content="http://yoursite.com/2017/03/28/iOS证书及ipa包重签名探究/index.html">
 <meta property="og:site_name" content="Rany">
-<meta property="og:description" content="##证书ID是什么？
+<meta property="og:description" content="证书ID是什么？
 图中方框里字符串就是证书ID，升级后的ipa标识就是证书ID+BundleID，只有两者完全匹配，安装包才能覆盖安装，否则就会提示安装失败。解决办法就是卸载安装包，重新安装！">
 <meta property="og:image" content="http://olinone.qiniudn.com/certifier%20ID.png">
 <meta property="og:image" content="http://olinone.qiniudn.com/resign_file1.png">
 <meta property="og:image" content="http://olinone.qiniudn.com/resign_entitlement.png">
-<meta property="og:updated_time" content="2017-03-28T08:26:56.000Z">
+<meta property="og:updated_time" content="2017-06-05T06:09:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS证书及ipa包重签名探究">
-<meta name="twitter:description" content="##证书ID是什么？
+<meta name="twitter:description" content="证书ID是什么？
 图中方框里字符串就是证书ID，升级后的ipa标识就是证书ID+BundleID，只有两者完全匹配，安装包才能覆盖安装，否则就会提示安装失败。解决办法就是卸载安装包，重新安装！">
 <meta name="twitter:image" content="http://olinone.qiniudn.com/certifier%20ID.png">
 
@@ -338,7 +338,7 @@
       
 
       
-        <p>##证书ID是什么？<br><img src="http://olinone.qiniudn.com/certifier%20ID.png" alt=""></p>
+        <h2 id="证书ID是什么？"><a href="#证书ID是什么？" class="headerlink" title="证书ID是什么？"></a>证书ID是什么？</h2><p><img src="http://olinone.qiniudn.com/certifier%20ID.png" alt=""></p>
 <p>图中方框里字符串就是证书ID，升级后的ipa标识就是证书ID+BundleID，<font color="#03A9F4">只有两者完全匹配，安装包才能覆盖安装</font>，否则就会提示安装失败。解决办法就是卸载安装包，重新安装！</p>
 <a id="more"></a>
 <blockquote>
@@ -354,8 +354,7 @@
 </ul>
 <p>因此，替换上面两个文件就解决了ipa重签名的主要问题。此外，代码签名探析文中还提到entitlements.plist授权文件，重签名时也需要处理。按照下图内容创建plist文件，输入相关信息。</p>
 <p><img src="http://olinone.qiniudn.com/resign_entitlement.png" alt=""></p>
-<p>##签名过程如下（文件路径自定义）</p>
-<p><strong>1、解压ipa安装包</strong></p>
+<h2 id="签名过程如下（文件路径自定义）"><a href="#签名过程如下（文件路径自定义）" class="headerlink" title="签名过程如下（文件路径自定义）"></a>签名过程如下（文件路径自定义）</h2><p><strong>1、解压ipa安装包</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cp olinone.ipa olinone.zip</div></pre></td></tr></table></figure>
 <p><strong>2、替换证书配置文件（文件名必须为embedded，不得自定义）</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cp embedded.mobileprovision Payload/olinone.app</div></pre></td></tr></table></figure>
@@ -460,8 +459,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="https://avatars3.githubusercontent.com/u/11763180?v=3&s=460"
@@ -523,6 +531,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#证书ID是什么？"><span class="nav-number">1.</span> <span class="nav-text">证书ID是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#签名过程如下（文件路径自定义）"><span class="nav-number">2.</span> <span class="nav-text">签名过程如下（文件路径自定义）</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
