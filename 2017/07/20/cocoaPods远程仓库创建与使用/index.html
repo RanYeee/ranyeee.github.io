@@ -92,7 +92,7 @@
 pod repo add 名字XX 地址
 3.创建本地模板库
 pod lib create spec文件名称  //记得修改podspec文件
-4.创建远程库 用于存放 步骤3 存放的库工程12345678git add .git commit -m &amp;apos;msg&amp;apos;#查看是否有关联远程库，没有需要设置">
+4.创建远程库 用于存放 步骤3 存放的库工程12345678git add .git commit -m &amp;apos;msg&amp;apos;#查看是否有关联远程库，没有需要设">
 <meta property="og:type" content="article">
 <meta property="og:title" content="cocoaPods远程仓库创建与使用">
 <meta property="og:url" content="http://yoursite.com/2017/07/20/cocoaPods远程仓库创建与使用/index.html">
@@ -102,8 +102,8 @@ pod lib create spec文件名称  //记得修改podspec文件
 pod repo add 名字XX 地址
 3.创建本地模板库
 pod lib create spec文件名称  //记得修改podspec文件
-4.创建远程库 用于存放 步骤3 存放的库工程12345678git add .git commit -m &amp;apos;msg&amp;apos;#查看是否有关联远程库，没有需要设置">
-<meta property="og:updated_time" content="2017-07-20T07:52:58.000Z">
+4.创建远程库 用于存放 步骤3 存放的库工程12345678git add .git commit -m &amp;apos;msg&amp;apos;#查看是否有关联远程库，没有需要设">
+<meta property="og:updated_time" content="2017-07-20T07:59:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cocoaPods远程仓库创建与使用">
 <meta name="twitter:description" content="新建1、创建一个专门用来存放spec文件的远程仓库
@@ -111,7 +111,7 @@ pod lib create spec文件名称  //记得修改podspec文件
 pod repo add 名字XX 地址
 3.创建本地模板库
 pod lib create spec文件名称  //记得修改podspec文件
-4.创建远程库 用于存放 步骤3 存放的库工程12345678git add .git commit -m &amp;apos;msg&amp;apos;#查看是否有关联远程库，没有需要设置">
+4.创建远程库 用于存放 步骤3 存放的库工程12345678git add .git commit -m &amp;apos;msg&amp;apos;#查看是否有关联远程库，没有需要设">
 
 
 
@@ -368,7 +368,8 @@ pod lib create spec文件名称  //记得修改podspec文件
       
 
       
-        <h2 id="新建"><a href="#新建" class="headerlink" title="新建"></a>新建</h2><p>1、创建一个专门用来存放spec文件的远程仓库</p>
+        <a id="more"></a>
+<h2 id="新建"><a href="#新建" class="headerlink" title="新建"></a>新建</h2><p>1、创建一个专门用来存放spec文件的远程仓库</p>
 <p>2.将远程库地址加入repo</p>
 <p><code>pod repo add 名字XX 地址</code></p>
 <p>3.创建本地模板库</p>
@@ -401,6 +402,7 @@ pod lib create spec文件名称  //记得修改podspec文件
 <p>如一个库里有三个子库，现在只需用到其中一个，不要全部用到 ，即把一个库分成几个小库</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"># 代表分离子库</div><div class="line">#s.source_files = &apos;xx/Classes/**/*&apos;  这种写法是匹配所有的</div><div class="line"></div><div class="line">s.subspec &apos;Category&apos; do |c|</div><div class="line">    c.source_files = &apos;xx/Classes/Category/**/*&apos;</div><div class="line">end</div><div class="line"></div><div class="line">s.subspec &apos;Network&apos; do |n|</div><div class="line">    n.source_files = &apos;xx/Classes/Network/**/*&apos;</div><div class="line">    n.dependency &apos;AFNetworking&apos;, &apos;~&gt; 3.1.0&apos;</div><div class="line">end</div><div class="line"></div><div class="line">s.subspec &apos;Tool&apos; do |t|</div><div class="line">    t.source_files = &apos;xx/Classes/Tool/**/*&apos;</div><div class="line">end</div><div class="line"></div><div class="line">然后使用这个子库过程podefile 写法</div><div class="line">target &apos;Example&apos; do</div><div class="line"></div><div class="line">   use_frameworks!</div><div class="line">    pod &apos;xx/Category&apos;</div><div class="line">    pod &apos;xx/Network&apos;</div><div class="line">end</div></pre></td></tr></table></figure>
+
       
     </div>
 
